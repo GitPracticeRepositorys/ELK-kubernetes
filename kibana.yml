@@ -31,6 +31,8 @@ kind: Service
 metadata:
   name: kibana-logging
   namespace: kube-system
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb"
   labels:
     k8s-app: kibana-logging
     kubernetes.io/name: "Kibana"
@@ -40,6 +42,5 @@ spec:
   - port: 5601
     protocol: TCP
     targetPort: ui
-    nodePort: 32010
   selector:
     k8s-app: kibana-logging
